@@ -203,17 +203,11 @@ label1:
 		{
 		controller1.id_mask = conn1.Select_mask(conn1.db) + 1;
 		
-		CreateThread(NULL,0,(LPTHREAD_START_ROUTINE) ThreadProc1,NULL,0,NULL);
-		CreateThread(NULL,0,(LPTHREAD_START_ROUTINE) ThreadProc2,NULL,0,NULL);
+		Thread1 = CreateThread(NULL,0,(LPTHREAD_START_ROUTINE) ThreadProc1,NULL,0,NULL);
+		Thread2 = CreateThread(NULL,0,(LPTHREAD_START_ROUTINE) ThreadProc2,NULL,0,NULL);
+		CloseHandle(Thread1);
+		CloseHandle(Thread2);
 		
-		/*thread sql_re(&Model::SQL_Reg,,db1,,ref(username),ref(password),ref(sex),ref(birthday),ref(fullname),ref(address));
-		sql_re.detach();*/
-		/*thread insert_mask(&Model::Insert_maskuser,db1,id_mask,fullname,sex,address);
-		
-		insert_mask.detach();*/
-		/*conn.SQL_Reg(conn.db, username, password, sex, birthday, fullname, address);
-		int id_mask = conn.Select_mask(conn.db);
-		conn.Insert_maskuser(conn.db, id_mask, fullname,sex, address);*/
 		
 		cout << "DONE" << endl;
 		system("pause");
